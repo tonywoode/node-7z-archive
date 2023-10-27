@@ -255,7 +255,7 @@ export const listArchive =
 
                 /* jshint maxlen: 130 */
                 let regex =
-                    /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) ([\.D][\.R][\.H][\.S][\.A]) +(\d+) +(\d+)? +(.+)/;
+                    /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})? ([\.D][\.R][\.H][\.S][\.A])? +(\d+) +(\d+)? +(.+)/;
 
                 /* jshint maxlen: 80 */
                 let buffer = ''; //Store incomplete line of a progress data.
@@ -313,8 +313,8 @@ export const listArchive =
 
                         if (res) {
                             let e = {
-                                date: new Date(res[1]),
-                                attr: res[2],
+                                date: res[1] ? new Date(res[1]) : null,
+                                attr: res[2] || null,
                                 size: parseInt(res[3], 10),
                                 name: ReplaceNativeSeparator(res[5]),
                             };
