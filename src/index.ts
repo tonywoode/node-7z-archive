@@ -255,7 +255,7 @@ export const listArchive =
 
                 /* jshint maxlen: 130 */
                 let regex =
-                    /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})? ([\.D][\.R][\.H][\.S][\.A]|[\.]{5}) +(\d+) +(\d+)? +(.+)/;
+                    /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})? ([.D][.R][.H][.S][.A]|[.]{5}) +(\d+) +(\d+)?  +(.+)/;
 
                 /* jshint maxlen: 80 */
                 let buffer = ''; //Store incomplete line of a progress data.
