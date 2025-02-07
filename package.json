@@ -9,6 +9,7 @@
     "report": "npx c8 npm test",
     "coverage": "npx c8 --reporter json npm test && npx codecov -f coverage/coverage-final.json",
     "install": "node installer.mjs",
+    "installAllBinaries": "node installer.mjs --all-binaries",
     "build": "tsc -p ./ || echo done",
     "prepare": "npm run build"
   },

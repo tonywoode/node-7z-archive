@@ -14,7 +14,13 @@ import {
 import { spawnSync } from 'child_process';
 import { unpack } from 'node-unar';
 import { wget, isString } from 'node-wget-fetch';
-import { isWindows } from 'node-sys';
+import minimist from 'minimist';
+
+const argv = minimist(process.argv.slice(2));
+const allBinaries = argv['all-binaries'];
+
+import { isWindows as isWindowsNodeSys } from 'node-sys';
+const isWindows = () => allBinaries || isWindowsNodeSys
 
 const __filename = fileURLToPath(
   import.meta.url);
@@ -180,7 +186,7 @@ platforms.forEach((dataFor) => {
                 if (dataFor.platform != 'win32')
                   makeExecutable([file], location);
                 console.log('Sfx module ' + file + ' copied successfully!');
-              } else if (dataFor.platform == process.platform) {
+              } else if (allBinaries || dataFor.platform == process.platform) {
                 to = to.replace(/7z_/g, '7z');
                 fs.copySync(from, to, {
                   overwrite: true

@@ -75,7 +75,7 @@ Each will in turn call:
 Installation
 ------------
 
-This package will download the 7zip binaries at install time. Host system does not need to have 7zip installed or in PATH.
+This package will download the 7zip binaries at install time, deploying (and then using) your platform's binary to a platform-specific folder in `binaries/`. Hence the host system does not need to have 7zip installed or in PATH.
 
 The binaries will be downloaded from:
 > On Linux - [![Release](https://github.com/techno-express/p7zip/workflows/Release/badge.svg)](https://github.com/techno-express/p7zip/actions/runs/401873413) compiled and available at [releases](https://github.com/techno-express/p7zip/releases/) previously https://sourceforge.net/projects/p7zip.
@@ -87,6 +87,8 @@ The binaries will be downloaded from:
 ```shell
 npm install --save node-7z-archive
 ```
+
+The install script can also receive an `--all-binaries` arg, which will deploy ALL platform's binaries (instead of only your own platform's - useful for upstream cross-platform distribution). This flag can be invoked externally by an upstream `package.json` build script by including in the build command: `"npm run installAllBinaries --prefix ./node_modules/node-7z-archive"`.
 
 CLI
 ---
